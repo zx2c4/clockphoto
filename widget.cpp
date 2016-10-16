@@ -29,9 +29,9 @@ Widget::Widget(const QStringList &photos, const QString &dir, const QString &clo
 	const QString defaultText = tr("Choose the date and time of the clock photo above.");
 	QLabel *adjustment = new QLabel(defaultText);
 	layout->addWidget(adjustment);
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Apply | QDialogButtonBox::Cancel);
-	buttons->button(QDialogButtonBox::Apply)->setText(tr("&Adjust dates"));
-	buttons->button(QDialogButtonBox::Apply)->setEnabled(false);
+	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Cancel);
+	buttons->button(QDialogButtonBox::Save)->setText(tr("&Adjust dates"));
+	buttons->button(QDialogButtonBox::Save)->setEnabled(false);
 	layout->addWidget(buttons);
 	setLayout(layout);
 
@@ -41,10 +41,10 @@ Widget::Widget(const QStringList &photos, const QString &dir, const QString &clo
 		QTime difference = QTime(0, 0).addSecs(qAbs(diff) % 86400);
 		if (diff != 0) {
 			adjustment->setText(QString("%1 %2 days, %3 hours, %4 minutes, %5 seconds").arg(diff < 0 ? tr("Add") : tr("Subtract")).arg(days).arg(difference.hour()).arg(difference.minute()).arg(difference.second()));
-			buttons->button(QDialogButtonBox::Apply)->setEnabled(true);
+			buttons->button(QDialogButtonBox::Save)->setEnabled(true);
 		} else {
 			adjustment->setText(defaultText);
-			buttons->button(QDialogButtonBox::Apply)->setEnabled(false);
+			buttons->button(QDialogButtonBox::Save)->setEnabled(false);
 		}
 	});
 

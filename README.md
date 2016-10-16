@@ -16,3 +16,7 @@ This requires `exiv2` and `qt5`.
     $ qmake
     $ make
     $ ./clockphoto CLOCK_PHOTO [IMAGE_DIRECTORY]
+
+### Demo
+
+<img src="clockphoto.gif" style="max-width: 100%">
