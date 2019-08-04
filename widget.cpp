@@ -10,7 +10,7 @@
 Widget::Widget(const QStringList &photos, const QString &dir, const QString &clockPhoto, QWidget *parent) : QDialog(parent)
 {
 	QProcess p;
-	p.start("exiv2", QStringList() << clockPhoto << "-K" << "Exif.Image.DateTime" << "-Pv", QProcess::ReadOnly);
+	p.start("exiv2", QStringList() << "-K" << "Exif.Image.DateTime" << "-Pv" << clockPhoto, QProcess::ReadOnly);
 	p.waitForFinished(-1);
 	const QDateTime clockDate = QDateTime::fromString(p.readAllStandardOutput(), "yyyy:MM:dd HH:mm:ss\n");
 	setWindowTitle(tr("Clock Photo Time Adjuster"));
